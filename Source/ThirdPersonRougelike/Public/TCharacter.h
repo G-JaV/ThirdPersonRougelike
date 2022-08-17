@@ -6,6 +6,9 @@
 #include "GameFramework/Character.h"
 #include "TCharacter.generated.h"
 
+class UCameraComponent;
+class USpringArmComponent;
+
 UCLASS()
 class THIRDPERSONROUGELIKE_API ATCharacter : public ACharacter
 {
@@ -16,8 +19,15 @@ public:
 	ATCharacter();
 
 protected:
+	UPROPERTY(VisibleAnywhere)
+	USpringArmComponent* MySpringArm;
+
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* MyCamera;
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	void MoveForward(float Value);
 
 public:	
 	// Called every frame
